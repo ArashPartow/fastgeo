@@ -99,7 +99,8 @@ begin
  try
 
   Randomize;
-  for i := 0 to Length(Segment) - 1 do
+
+  for i:= 0 to Length(Segment) - 1 do
   begin
    Segment[i][1].x := Random(Graphic.Width  - 10) + 5;
    Segment[i][1].y := Random(Graphic.Height - 10) + 5;

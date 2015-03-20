@@ -127,6 +127,7 @@ begin
       Segment[i][2].x := Random(Graphic.Width  - 10) + 5.0;
       Segment[i][2].y := Random(Graphic.Height - 10) + 5.0;
     until not IsDegenerate(Segment[i]);
+
     Graphic.Draw(Segment[i]);
 
     if Clip(Segment[i],Quadix,ClippedSeg) then
@@ -210,8 +211,10 @@ end;
 
 
 procedure SegmentCircleClip(Const Graphic : TFastGEOGraphics);
-const MAX_SEGMENTS = 60;
-var
+
+const MAX_SEGMENTS = 60;
+
+var
   i          : Integer;
   Circle     : TCircle;
   ClippedSeg : TSegment2D;
@@ -241,6 +244,8 @@ begin
 
     Graphic.Draw(Segment[i]);
 
+    Clip(Segment[i],Circle, ClippedSeg);
+
     if Clip(Segment[i],Circle,ClippedSeg) then
     begin
       Graphic.Pen.Color := clLime;
@@ -257,7 +262,8 @@ end;
 
 procedure RectangleRectangleClip(Const Graphic : TFastGEOGraphics);
 const MAX_RECTANGLES = 100;
-var
+
+var
   i           : Integer;
   MRect       : TRectangle;
   ClippedRect : TRectangle;

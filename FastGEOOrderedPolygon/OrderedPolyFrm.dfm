@@ -1,6 +1,6 @@
 object OrderedPolygonForm: TOrderedPolygonForm
-  Left = 407
-  Top = 344
+  Left = 649
+  Top = 535
   Width = 946
   Height = 631
   Caption = 'Ordered Polygon - By Arash Partow 2000'
@@ -52,7 +52,6 @@ object OrderedPolygonForm: TOrderedPolygonForm
     Width = 938
     Height = 57
     Align = alTop
-    Anchors = [akTop]
     TabOrder = 2
     DesignSize = (
       938

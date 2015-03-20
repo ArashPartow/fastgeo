@@ -5,7 +5,7 @@
 (*                2D/3D Computational Geometry Algorithms                *)
 (*                        Release Version 5.0.1                          *)
 (*                                                                       *)
-(* Author: Arash Partow 1997-2006                                        *)
+(* Author: Arash Partow 1997-2007                                        *)
 (* URL: http://fastgeo.partow.net                                        *)
 (*      http://www.partow.net/projects/fastgeo/index.html                *)
 (*                                                                       *)
@@ -24,10 +24,10 @@ interface
 
 
 const VersionInformation = 'FastGEO Version 5.0.1';
-const AuthorInformation  = 'Arash Partow (1997-2006)';
+const AuthorInformation  = 'Arash Partow (1997-2007)';
 const EpochInformation   = 'Lambda-Phi';
-const RecentUpdate       = '10-02-2006';
-const LCID               = '$10-02-2006:FEDEDB4632780C2FAE$';
+const RecentUpdate       = '07-07-2007';
+const LCID               = '$07-07-2007:FEDEDB4632780C2FAE$';
 
 
 {$IFNDEF FASTGEO}
@@ -3740,7 +3740,7 @@ begin
   if Length(Polygon) = 0 then Exit;
   Result := Polygon[0];
   for i := 1 to Length(Polygon) - 1 do
-    if Polygon[i].x < Result.x then
+    if Polygon[i].x > Result.x then
       Result := Polygon[i];
 end;
 (* End of Most Right Point *)
@@ -7731,7 +7731,7 @@ end;
 procedure Centroid(const Rectangle:TRectangle; out x,y:TFloat);
 begin
   x := (Rectangle[1].x + Rectangle[2].x) * 0.5;
-  x := (Rectangle[1].y + Rectangle[2].y) * 0.5;
+  y := (Rectangle[1].y + Rectangle[2].y) * 0.5;
 end;
 (* End of Centroid *)
 
@@ -8749,7 +8749,7 @@ end;
 
 function Area(const Circle:TCircle):TFloat;
 begin
-  Result := PI2 * Circle.Radius * Circle.Radius;
+  Result := PI * Circle.Radius * Circle.Radius;
 end;
 (* End of Area *)
 
@@ -10062,8 +10062,8 @@ function ShearXAxis(const Shear:TFloat; const Quadix:TQuadix2D):TQuadix2D;
 begin
   Result[1] := ShearXAxis(Shear,Quadix[1]);
   Result[2] := ShearXAxis(Shear,Quadix[2]);
-  Result[3] := ShearXAxis(Shear,Quadix[2]);
-  Result[3] := ShearXAxis(Shear,Quadix[2]);
+  Result[3] := ShearXAxis(Shear,Quadix[3]);
+  Result[3] := ShearXAxis(Shear,Quadix[4]);
 end;
 (* End of Shear 2D Quadix Along X-Axis *)
 

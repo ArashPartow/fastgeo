@@ -74,6 +74,7 @@ type TConvexHull2D = class (TBaseConvexHull)
       (* Stack related methods *)
       procedure Push(Pnt: TCHullPoint2D);
       function  Pop:Boolean;                          overload;
+      function  Pop(out Head:TCHullPoint2D):Boolean;  overload;
       function  Head:TCHullPoint2D;
       function  PreHead:TCHullPoint2D;
       function  PreHeadExist:Boolean;
@@ -233,6 +234,17 @@ begin
   Dec(StackHeadPosition);
  end;
 end;
+
+
+function TConvexHull2D.Pop(Out Head : TCHullPoint2D) : Boolean;
+begin
+ Result := False;
+ if StackHeadPosition < 0 then Exit;
+ Head := Stack[StackHeadPosition];
+ Dec(StackHeadPosition);
+ Result := True;
+end;
+
 
 function TConvexHull2D.Head:TCHullPoint2D;
 begin
